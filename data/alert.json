@@ -1,0 +1,1 @@
+{"action":"alert","tenant":"demo","alert_id":"ALERT-1001","service":"payment-api","environment":"sandbox","signal":"error_rate","value":18.6,"description":"Aumento de respuestas HTTP 5xx durante la prueba de carga."}
