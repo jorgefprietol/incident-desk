@@ -1,0 +1,20 @@
+flowchart TB
+    Client["CLI o consola web"] --> API["API con token e idempotencia"]
+    subgraph Local["Servicio local implementado"]
+        API --> Correlate["Deduplicación y correlación"]
+        Correlate --> Severity["Severidad por señal y umbral"]
+        Severity --> DB["Incidentes y auditoría en SQLite"]
+        DB --> Runbook["Runbook JSON por señal"]
+        Runbook --> Diagnose["Evidencia, hipótesis y cita"]
+        Diagnose --> Approval["Aprobación explícita"]
+        Approval --> Simulation["Simulación local permitida"]
+        Simulation --> DB
+        DB --> Closure["Cierre verificado por operador"]
+    end
+    subgraph Optional["Componentes opcionales por configurar"]
+        N8N["Workflow n8n incluido"]
+        Model["Resumen de diagnóstico Ollama"]
+    end
+    N8N -.-> API
+    Diagnose -.-> Model
+    External["Monitoreo y notificaciones por conectar"] -.-> N8N

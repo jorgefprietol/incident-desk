@@ -2,6 +2,12 @@
 
 Servicio para correlacionar alertas, ordenar incidentes por severidad y consultar runbooks con referencias. Mantiene separadas las observaciones y las hipótesis. Una aprobación explícita habilita únicamente una simulación local del recorrido de remediación.
 
+## Diseño y tecnologías
+
+Python 3.10+, SQLite y runbooks JSON versionados. Ollama es opcional para resumir diagnósticos; se incluyen n8n, Docker y CI.
+
+[Diagrama de arquitectura](docs/architecture.md) · [Diagrama del flujo](docs/flow.md) · [Tecnologías y alcance](docs/technologies.md)
+
 ## Ejecutar
 
 Requiere Python 3.10 o posterior. El modo local no necesita credenciales externas.
